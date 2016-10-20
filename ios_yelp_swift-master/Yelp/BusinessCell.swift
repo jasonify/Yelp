@@ -10,9 +10,35 @@ import UIKit
 
 class BusinessCell: UITableViewCell {
 
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var dollars: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var reviews: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var votingImage: UIImageView!
+    @IBOutlet weak var heroImage: UIImageView!
+    
+    
+    var business : Business! {
+        didSet {
+            titleLabel.text = business.name
+            heroImage.setImageWith(business.imageURL!)
+            categoriesLabel.text = business.categories
+            address.text = business.address
+            
+            reviews.text = " \(business.reviewCount) Reviews"
+            votingImage.setImageWith(business.ratingImageURL!)
+            distanceLabel.text = business.distance
+            
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        heroImage.layer.cornerRadius = 3
+        heroImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
