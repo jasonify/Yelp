@@ -40,12 +40,12 @@ class BusinessCell: UITableViewCell {
         heroImage.layer.cornerRadius = 3
         heroImage.clipsToBounds = true
         
-        titleLabel.preferredMaxLayoutWidth = titleLabel.frame.size.width
+      //  titleLabel.preferredMaxLayoutWidth = titleLabel.frame.size.width
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel.preferredMaxLayoutWidth = titleLabel.frame.size.width
+       // titleLabel.preferredMaxLayoutWidth = titleLabel.frame.size.width
 
     }
     
