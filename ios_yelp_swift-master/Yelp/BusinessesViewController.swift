@@ -15,7 +15,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     
     var searchBar : UISearchBar!
-    
+    var searchTerm: String?
     var businesses: [Business]!
   
     override func viewDidLoad() {
@@ -71,6 +71,22 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         self.searchBar.resignFirstResponder()
         //  self.loadData()
         
+        if let search = searchTerm {
+        Business.searchWithTerm(term: search , completion: { (businesses: [Business]?, error: Error?) -> Void in
+            
+            self.businesses = businesses
+            self.tableView.reloadData()
+            if let businesses = businesses {
+                for business in businesses {
+                    print(business.name!)
+                    print(business.address!)
+                }
+            }
+            
+            }
+        )
+        }
+        
     }
     
     
@@ -81,10 +97,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         self.searchBar.resignFirstResponder()
         self.searchBar.setShowsCancelButton(false, animated: false)
         
+        
        // self.loadData()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         print("SEARSCHING", searchText)
+        searchTerm = searchText
         self.searchBar.setShowsCancelButton(true, animated: false)
         
         if(searchText == ""){
