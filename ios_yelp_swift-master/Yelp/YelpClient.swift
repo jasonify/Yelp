@@ -59,7 +59,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         // https://api.yelp.com/v2/search/?location=San Francisco, CA&radius_filter=10000
         
         if distance != nil{
-            parameters["sort"] = distance! as AnyObject?
+            parameters["radius_filter"] = distance! as AnyObject?
         }
         
         if sort != nil {
