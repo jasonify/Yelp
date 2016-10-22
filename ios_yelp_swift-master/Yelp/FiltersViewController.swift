@@ -8,10 +8,10 @@
 
 import UIKit
 
-class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SwitchCellDelegate{
 
     var categories: [[String:String]]!
-    
+    var switchStates = [Int:Bool]()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +20,20 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
         // Do any additional setup after loading the view.
     }
 
     @IBAction func onSearchButton(_ sender: AnyObject) {
     }
    
+    
+    func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
+        let indexPath = tableView.indexPath(for: switchCell)!
+        
+        switchStates[indexPath.row] = value
+    }
     
     @IBAction func onCancelButton(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
@@ -34,9 +42,10 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-        
+        cell.delegate = self
         cell.labelSwitch.text = categories[indexPath.row]["name"]
         
+        cell.switchSwitch.isOn = switchStates[indexPath.row] ?? false
         return cell
     }
     
