@@ -9,10 +9,13 @@
 import UIKit
 
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate {
     
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var searchBar : UISearchBar!
+    
     var businesses: [Business]!
   
     override func viewDidLoad() {
@@ -21,6 +24,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        
+        searchBar.delegate = self
+        
+        self.navigationItem.titleView = searchBar
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
@@ -49,6 +59,69 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("ABOUT TO EDIT")
+        self.searchBar.setShowsCancelButton(true, animated: false)
+        
+    }// called when text starts editing
+    
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("--DONE!!")
+        self.searchBar.resignFirstResponder()
+        //  self.loadData()
+        
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) // called when keyboard search button pressed
+        
+    {
+        print("!!!DONE!!")
+        self.searchBar.resignFirstResponder()
+        self.searchBar.setShowsCancelButton(false, animated: false)
+        
+       // self.loadData()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        print("SEARSCHING", searchText)
+        self.searchBar.setShowsCancelButton(true, animated: false)
+        
+        if(searchText == ""){
+          //  endpoint = originalEndpoint;
+          //  isSearch = ""
+        } else{
+            
+          //  endpoint = ""
+          //  searchQuery = "&query=\(searchText)"
+          //  isSearch = "/search"
+        }
+        
+        
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) // called when cancel button pressed
+    {
+        
+        self.searchBar.resignFirstResponder()
+        
+        
+        // Stop doing the search stuff
+        // and clear the text in the search bar
+        searchBar.text = ""
+        // Hide the cancel button
+        searchBar.showsCancelButton = false
+      //  endpoint = originalEndpoint;
+      //  isSearch = ""
+        
+        // You could also change the position, frame etc of the searchBar
+    }
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(businesses != nil){
             return businesses.count
@@ -62,7 +135,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BusinessCell
         cell.business = businesses[indexPath.row]
         return cell
-        
     }
     
     
