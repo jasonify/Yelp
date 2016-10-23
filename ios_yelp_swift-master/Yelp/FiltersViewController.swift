@@ -19,7 +19,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     weak var delegate: FiltersViewControllerDelegate?
     
     var categories: [[String:String]]!
-    var switchStates = [Int:Bool]()
+    var categoriesSwitchStates = [Int:Bool]()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         var filters = [String: AnyObject]()
         
         var selectedCategories = [String]()
-        for(row, isSelected) in switchStates {
+        for(row, isSelected) in categoriesSwitchStates {
             if(isSelected){
                 selectedCategories.append(categories[row]["code"]!)
                 
@@ -56,7 +56,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: switchCell)!
         
-        switchStates[indexPath.row] = value
+        categoriesSwitchStates[indexPath.row] = value
     }
     
     @IBAction func onCancelButton(_ sender: AnyObject) {
@@ -69,7 +69,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.delegate = self
         cell.labelSwitch.text = categories[indexPath.row]["name"]
         
-        cell.switchSwitch.isOn = switchStates[indexPath.row] ?? false
+        cell.switchSwitch.isOn = categoriesSwitchStates[indexPath.row] ?? false
         return cell
     }
     
@@ -77,6 +77,49 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
+    
+    
+    
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+   
+  
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
+        
+   
+        // set the avatar
+        
+      
+        
+        
+        let label = UILabel(frame: CGRect(x: 50, y: 10, width: 300, height: 30))
+        //label.center = CGPointMake(160, 284)
+        //label.textAlignment = NSTextAlignment.Center
+        label.text = "I'am a test label"
+        headerView.addSubview(label)
+        
+        
+
+        
+        // Add a UILabel for the date here
+        // Use the section number to get the right URL
+        
+        return headerView
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

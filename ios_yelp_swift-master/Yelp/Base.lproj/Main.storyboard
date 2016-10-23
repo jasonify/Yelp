@@ -183,10 +183,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="w9O-54-DFW" firstAttribute="top" secondItem="iGD-PD-VIY" secondAttribute="bottom" id="8jL-Rv-Zy3"/>
                             <constraint firstItem="joO-5W-X5d" firstAttribute="top" secondItem="w9O-54-DFW" secondAttribute="bottom" id="DDZ-MW-Yjj"/>
                             <constraint firstItem="w9O-54-DFW" firstAttribute="leading" secondItem="m2u-EP-vHt" secondAttribute="leading" id="NF9-0H-qk4"/>
                             <constraint firstAttribute="trailing" secondItem="w9O-54-DFW" secondAttribute="trailing" id="SCw-aD-pCP"/>
+                            <constraint firstItem="w9O-54-DFW" firstAttribute="top" secondItem="m2u-EP-vHt" secondAttribute="top" id="T9r-gQ-ajB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filter" id="GHM-HD-mby">
