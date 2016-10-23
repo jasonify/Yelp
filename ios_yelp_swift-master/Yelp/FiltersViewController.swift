@@ -20,11 +20,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var isDeals = false
     
+    // TODO: enum // constants or section
     // Distance
-    var distanceCollapsedText = "Auto"
     var distanceExpanded = false
-    var distances: [ (String, Decimal)] = [
-        ("Auto", -1),
+    var distanceSelected:Int = 0
+    
+    let SECTION_DEAL = 0
+    let SECTION_DISTANCE = 1
+    let SECTION_SORT = 2
+    let SECTION_CATEGORY = 3
+    
+    var distances: [ (String, Decimal?)] = [
+        ("Auto", nil),
         ("5 miles", 8046.72),
         ("10 miles", 8046.72*2),
         ("15 miles", 8046.72*3),
@@ -78,7 +85,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("sec", indexPath.section)
         print("row", indexPath.row)
 
-        if(indexPath.section == 0){
+        if(indexPath.section == SECTION_DEAL){
             print("DEALS", value)
            isDeals = value
         } else {
@@ -94,17 +101,30 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
        // print("cell at")
-        if(indexPath.section == 0){
+        if(indexPath.section == SECTION_DEAL){
             return dealsCell(tableView, cellForRowAt: indexPath)
             
         }
         
-        print("categories")
+        if(indexPath.section == SECTION_DISTANCE){
+            return distanceCell(tableView, cellForRowAt: indexPath)
+            
+        }
         
         
         return categoriesCell(tableView, cellForRowAt: indexPath)
     }
     
+    func distanceCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // If not expanded
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpandCell", for: indexPath) as! ExpandCell
+        let text = distances[distanceSelected].0
+        cell.titleLabel.text = text
+        return cell
+        
+    }
     func dealsCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
         cell.labelSwitch.text = "Offering a Deal"
@@ -125,9 +145,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       //print("section", section)
-        if(section == 0){
+        // Deals
+        if(section == SECTION_DEAL){
             return 1
+        }
+        
+        // Distance
+        if section == SECTION_DISTANCE {
+            if distanceExpanded {
+                return distances.count
+            } else {
+                return 1
+            }
         }
         
         // Last
@@ -137,8 +166,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func numberOfSections(in tableView: UITableView) -> Int {
     
-       // print("numbers of sects")
-        return 2
+       
+        return 3
     }
     
    
@@ -146,13 +175,35 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
    
         let header =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader") as! TableSectionHeader
-        header.xwtextLabel?.text = "Hello"
+        if( section == SECTION_DEAL){
+            header.xwtextLabel?.text = ""
+
+        }
+        
+        
+        if( section == SECTION_DISTANCE){
+            header.xwtextLabel?.text = "Distance"
+            
+        }
+        
+        if( section == SECTION_SORT){
+            header.xwtextLabel?.text = "Sort By"
+            
+        }
+        
+        if( section == SECTION_CATEGORY){
+            header.xwtextLabel?.text = "Category"
+            
+        }
         return header
     }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
+        if(section == SECTION_DEAL){
+            return 0
+        }
         return 50
     }
     
