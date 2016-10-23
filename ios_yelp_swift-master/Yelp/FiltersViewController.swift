@@ -82,7 +82,14 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         let indexPath = tableView.indexPath(for: expandCell)!
         if indexPath.section == SECTION_DISTANCE {
             distanceExpanded = true
-            tableView.reloadData()
+            
+            UIView.setAnimationsEnabled(true)
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(NSIndexSet(index: SECTION_DISTANCE) as IndexSet, with: UITableViewRowAnimation.bottom)
+            self.tableView.endUpdates()
+            UIView.setAnimationsEnabled(false)
+            
+            // tableView.reloadData()
         }
 
     }
@@ -100,7 +107,15 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if(indexPath.section == SECTION_DISTANCE){
             distanceExpanded = false
             distanceSelected = indexPath.row
-            tableView.reloadData()
+            
+            UIView.setAnimationsEnabled(true)
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(NSIndexSet(index: SECTION_DISTANCE) as IndexSet, with: UITableViewRowAnimation.bottom)
+            self.tableView.endUpdates()
+            UIView.setAnimationsEnabled(false)
+            
+            
+            //tableView.reloadData()
         } else {
             categoriesSwitchStates[indexPath.row] = value
         }
