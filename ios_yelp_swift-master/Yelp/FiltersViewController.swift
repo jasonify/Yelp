@@ -29,6 +29,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
+        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
         
         // Do any additional setup after loading the view.
     }
@@ -87,31 +89,26 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
    
   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
-        
-   
-        // set the avatar
-        
-      
-        
-        
-        let label = UILabel(frame: CGRect(x: 50, y: 10, width: 300, height: 30))
-        //label.center = CGPointMake(160, 284)
-        //label.textAlignment = NSTextAlignment.Center
-        label.text = "I'am a test label"
-        headerView.addSubview(label)
-        
-        
+        /*
+         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
+         
+         let label = UILabel(frame: CGRect(x: 50, y: 10, width: 300, height: 30))
+         //label.center = CGPointMake(160, 284)
+         //label.textAlignment = NSTextAlignment.Center
+         label.text = "I'am a test label"
+         headerView.addSubview(label)
 
-        
-        // Add a UILabel for the date here
-        // Use the section number to get the right URL
-        
-        return headerView
-        
-        
+         
+         // Add a UILabel for the date here
+         // Use the section number to get the right URL
+         
+         return headerView
+
+        */
+        let header =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader") as! TableSectionHeader
+        header.xwtextLabel?.text = "HELLO"
+        return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
