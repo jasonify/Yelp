@@ -164,8 +164,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
                 self.tableView.reloadData()
             }
         )
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

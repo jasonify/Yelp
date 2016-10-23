@@ -22,6 +22,7 @@
 		965E67AC1DBB2AFB005E3B96 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965E67AB1DBB2AFB005E3B96 /* FiltersViewController.swift */; };
 		965E67AE1DBC7FFB005E3B96 /* TableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 965E67AD1DBC7FFB005E3B96 /* TableSectionHeader.xib */; };
 		965E67B01DBC8043005E3B96 /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965E67AF1DBC8043005E3B96 /* TableSectionHeader.swift */; };
+		965E67B21DBD4340005E3B96 /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965E67B11DBD4340005E3B96 /* ExpandCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		965E67AB1DBB2AFB005E3B96 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		965E67AD1DBC7FFB005E3B96 /* TableSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
 		965E67AF1DBC8043005E3B96 /* TableSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
+		965E67B11DBD4340005E3B96 /* ExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
 		9B128C050DE78660DE2A8E75 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79C0AC126EDAA235847CEA2 /* Pods_Yelp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				964F2ED61DB88BDC00999295 /* BusinessCell.swift */,
 				965E67A91DBB269B005E3B96 /* SwitchCell.swift */,
 				965E67AF1DBC8043005E3B96 /* TableSectionHeader.swift */,
+				965E67B11DBD4340005E3B96 /* ExpandCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			files = (
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				965E67B01DBC8043005E3B96 /* TableSectionHeader.swift in Sources */,
+				965E67B21DBD4340005E3B96 /* ExpandCell.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
 				965E67AC1DBB2AFB005E3B96 /* FiltersViewController.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,

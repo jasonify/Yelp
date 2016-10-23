@@ -20,6 +20,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var isDeals = false
     
+    // Distance
+    var distanceCollapsedText = "Auto"
+    var distanceExpanded = false
+    var distances: [ (String, Decimal)] = [
+        ("Auto", -1),
+        ("5 miles", 8046.72),
+        ("10 miles", 8046.72*2),
+        ("15 miles", 8046.72*3),
+        ("20 miles", 8046.72*4),
+    ]
+  
+    // Categories
     var categories: [[String:String]]!
     var categoriesSwitchStates = [Int:Bool]()
     @IBOutlet weak var tableView: UITableView!

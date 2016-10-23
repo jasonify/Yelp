@@ -151,8 +151,36 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w9O-54-DFW">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="cgk-LM-ATU" customClass="ExpandCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cgk-LM-ATU" id="8p9-FP-FRA">
+                                            <frame key="frameInset" width="320" height="83"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPA-jN-efR">
+                                                    <frame key="frameInset" minX="28" minY="31" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daP-WJ-rur">
+                                                    <frame key="frameInset" minX="250" minY="16" width="48" height="52"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="daP-WJ-rur" firstAttribute="centerY" secondItem="8p9-FP-FRA" secondAttribute="centerY" id="5wO-o2-Btk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="daP-WJ-rur" secondAttribute="trailing" constant="14" id="K1F-cu-oJ2"/>
+                                                <constraint firstItem="UPA-jN-efR" firstAttribute="leading" secondItem="8p9-FP-FRA" secondAttribute="leading" constant="20" id="Vkr-iU-cXI"/>
+                                                <constraint firstItem="UPA-jN-efR" firstAttribute="centerY" secondItem="8p9-FP-FRA" secondAttribute="centerY" id="uCc-7T-WAb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="UPA-jN-efR" id="3vS-hk-vFy"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="136" id="c0m-tc-WXO" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="136"/>
+                                        <rect key="frame" x="0.0" y="176" width="320" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c0m-tc-WXO" id="1ju-Iq-F7f">
                                             <frame key="frameInset" width="320" height="135"/>
