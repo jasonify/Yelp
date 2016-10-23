@@ -85,7 +85,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             UIView.setAnimationsEnabled(true)
             self.tableView.beginUpdates()
-            self.tableView.reloadSections(NSIndexSet(index: SECTION_DISTANCE) as IndexSet, with: UITableViewRowAnimation.bottom)
+            self.tableView.reloadSections(NSIndexSet(index: SECTION_DISTANCE) as IndexSet, with: UITableViewRowAnimation.fade)
             self.tableView.endUpdates()
             UIView.setAnimationsEnabled(false)
             
@@ -110,7 +110,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             UIView.setAnimationsEnabled(true)
             self.tableView.beginUpdates()
-            self.tableView.reloadSections(NSIndexSet(index: SECTION_DISTANCE) as IndexSet, with: UITableViewRowAnimation.bottom)
+            self.tableView.reloadSections(NSIndexSet(index: SECTION_DISTANCE) as IndexSet, with: UITableViewRowAnimation.fade)
             self.tableView.endUpdates()
             UIView.setAnimationsEnabled(false)
             
