@@ -67,6 +67,27 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
+        print("cell at")
+        if(indexPath.section == 0){
+            return dealsCell(tableView, cellForRowAt: indexPath)
+            
+        }
+        
+        print("categories")
+        
+        
+        return categoriesCell(tableView, cellForRowAt: indexPath)
+    }
+    
+    func dealsCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+        cell.labelSwitch.text = "Offering a Deal"
+        
+        return cell
+    }
+    
+    func categoriesCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
         cell.delegate = self
         cell.labelSwitch.text = categories[indexPath.row]["name"]
@@ -77,42 +98,36 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("section", section)
+        if(section == 0){
+            return 1
+        }
+        
+        // Last
         return categories.count
     }
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
     
-    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        print("numbers of sects")
+        return 2
     }
     
    
   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        /*
-         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
-         
-         let label = UILabel(frame: CGRect(x: 50, y: 10, width: 300, height: 30))
-         //label.center = CGPointMake(160, 284)
-         //label.textAlignment = NSTextAlignment.Center
-         label.text = "I'am a test label"
-         headerView.addSubview(label)
-
-         
-         // Add a UILabel for the date here
-         // Use the section number to get the right URL
-         
-         return headerView
-
-        */
+   
         let header =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader") as! TableSectionHeader
-        header.xwtextLabel?.text = "HELLO"
+        header.xwtextLabel?.text = "Hello"
         return header
     }
     
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        
+        return 50
     }
     
     

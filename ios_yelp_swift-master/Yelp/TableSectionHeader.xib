@@ -9,28 +9,35 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TableSectionHeader" customModule="Yelp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u0K-Tc-hZv">
-                    <frame key="frameInset" width="375" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0K-Tc-hZv">
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nN-q3-tkg">
-                            <frame key="frameInset" minX="34" minY="41" width="312" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nN-q3-tkg">
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="0nN-q3-tkg" secondAttribute="trailing" constant="8" id="0aK-o3-f9x"/>
+                        <constraint firstItem="0nN-q3-tkg" firstAttribute="leading" secondItem="u0K-Tc-hZv" secondAttribute="leading" constant="8" id="Uu0-Wn-YcG"/>
+                        <constraint firstItem="0nN-q3-tkg" firstAttribute="top" secondItem="u0K-Tc-hZv" secondAttribute="top" constant="12" id="sfO-DU-qdT"/>
+                    </constraints>
                 </view>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="u0K-Tc-hZv" secondAttribute="bottom" id="7cv-8G-o7B"/>
+                <constraint firstAttribute="trailing" secondItem="u0K-Tc-hZv" secondAttribute="trailing" id="Eir-VD-NOK"/>
+                <constraint firstItem="u0K-Tc-hZv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pbZ-hr-8P7"/>
+                <constraint firstItem="u0K-Tc-hZv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="y2h-7O-Hwn"/>
+            </constraints>
             <connections>
                 <outlet property="xwtextLabel" destination="0nN-q3-tkg" id="lBs-Vn-BeQ"/>
             </connections>
-            <point key="canvasLocation" x="26.5" y="75.5"/>
+            <point key="canvasLocation" x="26" y="75"/>
         </view>
     </objects>
 </document>
