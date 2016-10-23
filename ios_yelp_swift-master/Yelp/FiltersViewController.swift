@@ -18,6 +18,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     weak var delegate: FiltersViewControllerDelegate?
     
+    var isDeals = false
+    
     var categories: [[String:String]]!
     var categoriesSwitchStates = [Int:Bool]()
     @IBOutlet weak var tableView: UITableView!
@@ -40,6 +42,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var filters = [String: AnyObject]()
         
+        filters["deals"] = isDeals as AnyObject
+        
         var selectedCategories = [String]()
         for(row, isSelected) in categoriesSwitchStates {
             if(isSelected){
@@ -58,7 +62,11 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: switchCell)!
         
-        categoriesSwitchStates[indexPath.row] = value
+        if(indexPath.section == 0){
+           isDeals = value
+        } else {
+            categoriesSwitchStates[indexPath.row] = value
+        }
     }
     
     @IBAction func onCancelButton(_ sender: AnyObject) {

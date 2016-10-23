@@ -12,7 +12,7 @@ Thur
 10 min
 ——
 Friday
-40 mims
+45 mims
 45 mins
 ~ 45 mins
 45 mins
@@ -21,6 +21,14 @@ Friday
 Sat
 35 mins
 
-30 mins
+35 mins
 
 45 mins
+
+=== TOTAL SO FAR = 8.5 hours (45*9+10+25+35+35)/60 without lecture
+
+———————
+Sun
+20 mins
+
+
