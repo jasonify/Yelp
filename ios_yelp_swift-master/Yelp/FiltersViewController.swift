@@ -132,7 +132,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         // If not expanded
         if distanceExpanded {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-            cell.labelSwitch.text = "Offering a Deal"
+            cell.labelSwitch.text = distances[indexPath.row].0
             cell.delegate = self
             cell.switchSwitch.isOn = isDeals
             return cell
