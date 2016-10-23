@@ -62,7 +62,12 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: switchCell)!
         
+        print("switchCell", value)
+        print("sec", indexPath.section)
+        print("row", indexPath.row)
+
         if(indexPath.section == 0){
+            print("DEALS", value)
            isDeals = value
         } else {
             categoriesSwitchStates[indexPath.row] = value
@@ -76,7 +81,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-        print("cell at")
+       // print("cell at")
         if(indexPath.section == 0){
             return dealsCell(tableView, cellForRowAt: indexPath)
             
@@ -91,7 +96,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func dealsCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
         cell.labelSwitch.text = "Offering a Deal"
-        
+        cell.delegate = self
+        cell.switchSwitch.isOn = isDeals
         return cell
     }
     
@@ -107,7 +113,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("section", section)
+       //print("section", section)
         if(section == 0){
             return 1
         }
@@ -119,7 +125,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func numberOfSections(in tableView: UITableView) -> Int {
     
-        print("numbers of sects")
+       // print("numbers of sects")
         return 2
     }
     

@@ -159,7 +159,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
         let categories = filters["categories"] as? [String]
         let deals = filters["deals"] as? Bool
-        Business.searchWithTerm(term: "Restaurants", distance: 2321, sort: YelpSortMode.highestRated, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", distance: nil, sort: YelpSortMode.highestRated, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
                 self.businesses = businesses
                 self.tableView.reloadData()
             }
