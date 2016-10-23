@@ -168,6 +168,11 @@
                                                     <frame key="frameInset" minX="250" minY="16" width="48" height="52"/>
                                                     <color key="backgroundColor" red="0.69656956449999996" green="0.69656956449999996" blue="0.69656956449999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwW-RF-u6z">
+                                                    <frame key="frameInset" minX="208" minY="24" width="32" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="daP-WJ-rur" firstAttribute="centerY" secondItem="8p9-FP-FRA" secondAttribute="centerY" id="5wO-o2-Btk"/>
