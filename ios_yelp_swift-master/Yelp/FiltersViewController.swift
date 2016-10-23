@@ -13,7 +13,7 @@ import UIKit
    @objc optional func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String: AnyObject])
     
 }
-class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SwitchCellDelegate{
+class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SwitchCellDelegate, ExpandCellDelegate{
 
     
     weak var delegate: FiltersViewControllerDelegate?
@@ -78,6 +78,15 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
    
     
+    func expandCell(expandCell: ExpandCell){
+        let indexPath = tableView.indexPath(for: expandCell)!
+        if indexPath.section == SECTION_DISTANCE {
+            distanceExpanded = true
+            tableView.reloadData()
+        }
+
+    }
+    
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: switchCell)!
         
@@ -88,6 +97,10 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(indexPath.section == SECTION_DEAL){
             print("DEALS", value)
            isDeals = value
+        } else if(indexPath.section == SECTION_DISTANCE){
+            distanceExpanded = false
+            distanceSelected = indexPath.row
+            tableView.reloadData()
         } else {
             categoriesSwitchStates[indexPath.row] = value
         }
@@ -117,10 +130,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func distanceCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // If not expanded
+        if distanceExpanded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+            cell.labelSwitch.text = "Offering a Deal"
+            cell.delegate = self
+            cell.switchSwitch.isOn = isDeals
+            return cell
+        }
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpandCell", for: indexPath) as! ExpandCell
         let text = distances[distanceSelected].0
+        cell.delegate = self
         cell.titleLabel.text = text
         return cell
         

@@ -168,17 +168,19 @@
                                                     <frame key="frameInset" minX="250" minY="16" width="48" height="52"/>
                                                     <color key="backgroundColor" red="0.69656956449999996" green="0.69656956449999996" blue="0.69656956449999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwW-RF-u6z">
-                                                    <frame key="frameInset" minX="208" minY="24" width="32" height="33"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwW-RF-u6z">
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="rwW-RF-u6z" secondAttribute="trailing" id="149-ij-NHh"/>
                                                 <constraint firstItem="daP-WJ-rur" firstAttribute="centerY" secondItem="8p9-FP-FRA" secondAttribute="centerY" id="5wO-o2-Btk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="daP-WJ-rur" secondAttribute="trailing" constant="14" id="K1F-cu-oJ2"/>
                                                 <constraint firstItem="UPA-jN-efR" firstAttribute="leading" secondItem="8p9-FP-FRA" secondAttribute="leading" constant="20" id="Vkr-iU-cXI"/>
+                                                <constraint firstItem="rwW-RF-u6z" firstAttribute="top" secondItem="8p9-FP-FRA" secondAttribute="top" id="cVa-vR-TBf"/>
                                                 <constraint firstItem="UPA-jN-efR" firstAttribute="centerY" secondItem="8p9-FP-FRA" secondAttribute="centerY" id="uCc-7T-WAb"/>
+                                                <constraint firstItem="rwW-RF-u6z" firstAttribute="leading" secondItem="8p9-FP-FRA" secondAttribute="leading" id="yqT-tl-Nvi"/>
+                                                <constraint firstAttribute="bottom" secondItem="rwW-RF-u6z" secondAttribute="bottom" id="zWP-EL-kMf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
