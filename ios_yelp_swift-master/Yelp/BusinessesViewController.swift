@@ -35,7 +35,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         self.navigationItem.titleView = searchBar
         
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
             self.tableView.reloadData()
@@ -49,17 +49,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             }
         )
         
-        /* Example of Yelp search with more search options specified
-         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-         self.businesses = businesses
-         
-         for business in businesses {
-         print(business.name!)
-         print(business.address!)
-         }
-         }
-         */
-        
+    
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
