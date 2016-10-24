@@ -37,6 +37,20 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         ("15 miles", 8046.72*3),
         ("20 miles", 8046.72*4),
     ]
+    
+    // SORT
+    
+    var sortExpanded = false
+    var sortSelected = 0
+    
+    var sorts: [ (String, YelpSortMode)] = [
+        ("Best Match", YelpSortMode.bestMatched),
+        ("Distance", YelpSortMode.distance),
+        ("Highest Rated", YelpSortMode.highestRated),
+    ]
+    
+    
+    
   
     // Categories
     var categories: [[String:String]]!
@@ -94,8 +108,20 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.endUpdates()
             UIView.setAnimationsEnabled(false)
             
-            // tableView.reloadData()
         }
+        
+        if indexPath.section == SECTION_SORT {
+            sortExpanded = true
+            
+            UIView.setAnimationsEnabled(true)
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(NSIndexSet(index: SECTION_SORT) as IndexSet, with: UITableViewRowAnimation.fade)
+            self.tableView.endUpdates()
+            UIView.setAnimationsEnabled(false)
+            
+
+        }
+        
 
     }
     
@@ -119,8 +145,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.endUpdates()
             UIView.setAnimationsEnabled(false)
             
+         
+        } else if(indexPath.section == SECTION_SORT){
+            sortExpanded = false
+            sortSelected = indexPath.row
             
-            //tableView.reloadData()
+            UIView.setAnimationsEnabled(true)
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(NSIndexSet(index: SECTION_SORT) as IndexSet, with: UITableViewRowAnimation.fade)
+            self.tableView.endUpdates()
+            UIView.setAnimationsEnabled(false)
+            
+            
         } else {
             categoriesSwitchStates[indexPath.row] = value
         }
@@ -144,9 +180,38 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }
         
+        if(indexPath.section == SECTION_SORT){
+            return sortCell(tableView, cellForRowAt: indexPath)
+            
+        }
         
         return categoriesCell(tableView, cellForRowAt: indexPath)
     }
+    
+    
+    func sortCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // If not expanded
+        if sortExpanded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+            cell.labelSwitch.text = sorts[indexPath.row].0
+            cell.delegate = self
+            if(indexPath.row == sortSelected ){
+                cell.switchSwitch.isOn = true
+            } else{
+                cell.switchSwitch.isOn = false
+            }
+            return cell
+        }
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpandCell", for: indexPath) as! ExpandCell
+        let text = sorts[sortSelected].0
+        cell.delegate = self
+        cell.titleLabel.text = text
+        return cell
+        
+    }
+    
     
     func distanceCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // If not expanded
@@ -170,6 +235,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
         
     }
+    
     func dealsCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
         cell.labelSwitch.text = "Offering a Deal"
@@ -204,6 +270,16 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         
+        if section == SECTION_SORT {
+            if sortExpanded {
+                return sorts.count
+            } else {
+                return 1
+            }
+        }
+        
+        
+        
         // Last
         return categories.count
     }
@@ -212,7 +288,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func numberOfSections(in tableView: UITableView) -> Int {
     
        
-        return 3
+        return 4
     }
     
    
