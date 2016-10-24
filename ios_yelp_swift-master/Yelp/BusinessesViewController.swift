@@ -75,19 +75,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         //  self.loadData()
         
         if let search = searchTerm {
-        Business.searchWithTerm(term: search , completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            self.businesses = businesses
-            self.tableView.reloadData()
-            if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
-            }
-            
-            }
-        )
+      
+            searchWithFilters(savedFilters, term: search)
+
         }
         
     }
@@ -157,13 +147,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    func searchWithFilters(_ filters: [String: AnyObject]){
+    func searchWithFilters(_ filters: [String: AnyObject], term: String){
         let categories = filters["categories"] as? [String]
         let deals = filters["deals"] as? Bool
         let distance = filters["distance"] as? Double
         print("--- distance ---", distance)
         
-        Business.searchWithTerm(term: "Restaurants", distance: distance, sort: YelpSortMode.highestRated, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: term, distance: distance, sort: YelpSortMode.highestRated, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
             }
@@ -172,7 +162,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         savedFilters = filters
-        searchWithFilters(filters)
+        searchWithFilters(savedFilters, term: "Restaurants")
     }
     
     override func didReceiveMemoryWarning() {
