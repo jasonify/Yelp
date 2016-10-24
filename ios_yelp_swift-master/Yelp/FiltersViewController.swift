@@ -149,7 +149,11 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
             cell.labelSwitch.text = distances[indexPath.row].0
             cell.delegate = self
-            cell.switchSwitch.isOn = isDeals
+            if(indexPath.row == distanceSelected ){
+                cell.switchSwitch.isOn = true
+            } else{
+                cell.switchSwitch.isOn = false
+            }
             return cell
         }
         
