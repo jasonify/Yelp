@@ -23,10 +23,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="128" id="ohq-cW-a9s" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="128"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ohq-cW-a9s" id="WzU-Th-xnX">
-                                            <frame key="frameInset" width="1000" height="127.5"/>
+                                            <frame key="frameInset" width="320" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I2g-BW-IoR">
@@ -155,7 +155,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cgk-LM-ATU" id="8p9-FP-FRA">
-                                            <frame key="frameInset" width="320" height="83.5"/>
+                                            <frame key="frameInset" width="320" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPA-jN-efR">
@@ -183,7 +183,7 @@
                                         <rect key="frame" x="0.0" y="176" width="320" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c0m-tc-WXO" id="1ju-Iq-F7f">
-                                            <frame key="frameInset" width="320" height="135.5"/>
+                                            <frame key="frameInset" width="320" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymn-H6-HCq">
@@ -204,6 +204,34 @@
                                         <connections>
                                             <outlet property="labelSwitch" destination="ymn-H6-HCq" id="ger-6b-ncC"/>
                                             <outlet property="switchSwitch" destination="K00-oK-4eb" id="WX7-HY-KP4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckmarkCell" rowHeight="74" id="cFu-DR-mBk" customClass="CheckmarkCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="312" width="320" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cFu-DR-mBk" id="tix-nR-C7X">
+                                            <frame key="frameInset" width="320" height="73"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz5-Ja-g59">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="INi-Tl-1hD">
+                                                    <frame key="frameInset" minX="251" minY="12" width="48" height="48"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vz5-Ja-g59" firstAttribute="centerY" secondItem="tix-nR-C7X" secondAttribute="centerY" id="FeX-4i-hHl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="INi-Tl-1hD" secondAttribute="trailing" constant="8" id="Q9f-JX-VJn"/>
+                                                <constraint firstItem="Vz5-Ja-g59" firstAttribute="leading" secondItem="tix-nR-C7X" secondAttribute="leadingMargin" constant="18" id="i5e-PF-0MO"/>
+                                                <constraint firstItem="INi-Tl-1hD" firstAttribute="centerY" secondItem="tix-nR-C7X" secondAttribute="centerY" id="x7c-LX-CCv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkImage" destination="INi-Tl-1hD" id="Xdc-sg-W8T"/>
+                                            <outlet property="titleLabel" destination="Vz5-Ja-g59" id="0GV-Fv-Fjo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -276,6 +304,7 @@
     </scenes>
     <resources>
         <image name="arrow" width="48" height="48"/>
+        <image name="check" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -13,7 +13,7 @@ import UIKit
    @objc optional func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String: AnyObject])
     
 }
-class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SwitchCellDelegate, ExpandCellDelegate{
+class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , SwitchCellDelegate, ExpandCellDelegate, CheckmarkCellDelegate{
 
     
     weak var delegate: FiltersViewControllerDelegate?
@@ -48,7 +48,6 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         ("Distance", YelpSortMode.distance),
         ("Highest Rated", YelpSortMode.highestRated),
     ]
-    
     
     
   
@@ -120,23 +119,17 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.endUpdates()
             UIView.setAnimationsEnabled(false)
             
-
         }
-        
 
     }
     
-    func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
-        let indexPath = tableView.indexPath(for: switchCell)!
+    func checkmarkCell(checkmarkCell : CheckmarkCell) {
+        let indexPath = tableView.indexPath(for: checkmarkCell)!
         
-        print("switchCell", value)
-        print("sec", indexPath.section)
-        print("row", indexPath.row)
-
-        if(indexPath.section == SECTION_DEAL){
-            print("DEALS", value)
-           isDeals = value
-        } else if(indexPath.section == SECTION_DISTANCE){
+        print("sec--", indexPath.section)
+        print("row--", indexPath.row)
+        
+       if(indexPath.section == SECTION_DISTANCE){
             distanceExpanded = false
             distanceSelected = indexPath.row
             
@@ -146,8 +139,10 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.endUpdates()
             UIView.setAnimationsEnabled(false)
             
-         
-        } else if(indexPath.section == SECTION_SORT){
+            
+        }
+        
+        if(indexPath.section == SECTION_SORT){
             sortExpanded = false
             sortSelected = indexPath.row
             
@@ -158,6 +153,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             UIView.setAnimationsEnabled(false)
             
             
+        }
+        
+        
+    }
+    
+    func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
+        let indexPath = tableView.indexPath(for: switchCell)!
+        
+
+        if(indexPath.section == SECTION_DEAL){
+            print("DEALS", value)
+            isDeals = value
         } else {
             categoriesSwitchStates[indexPath.row] = value
         }
@@ -193,13 +200,14 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func sortCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // If not expanded
         if sortExpanded {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-            cell.labelSwitch.text = sorts[indexPath.row].0
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CheckmarkCell", for: indexPath) as! CheckmarkCell
+            cell.titleLabel.text = sorts[indexPath.row].0
             cell.delegate = self
             if(indexPath.row == sortSelected ){
-                cell.switchSwitch.isOn = true
+                              cell.checkImage.image =  #imageLiteral(resourceName: "selectedcheck")
             } else{
-                cell.switchSwitch.isOn = false
+                cell.checkImage.image =  #imageLiteral(resourceName: "check")
+            
             }
             return cell
         }
@@ -217,13 +225,14 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func distanceCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // If not expanded
         if distanceExpanded {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-            cell.labelSwitch.text = distances[indexPath.row].0
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CheckmarkCell", for: indexPath) as! CheckmarkCell
+            cell.titleLabel.text = distances[indexPath.row].0
             cell.delegate = self
             if(indexPath.row == distanceSelected ){
-                cell.switchSwitch.isOn = true
+                cell.checkImage.image =  #imageLiteral(resourceName: "selectedcheck")
             } else{
-                cell.switchSwitch.isOn = false
+                cell.checkImage.image =  #imageLiteral(resourceName: "check")
+                    
             }
             return cell
         }

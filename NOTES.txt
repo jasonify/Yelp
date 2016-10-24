@@ -34,3 +34,7 @@ Sun
 10 mins
 45 mins
 
+-- 
+Mon
+45 min
+15
