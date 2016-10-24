@@ -79,8 +79,9 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         filters["distance"] =  distances[distanceSelected].1 as AnyObject?
-        print("OG: distance--", filters["distance"] )
         
+        filters["sort"] =  sorts[sortSelected].1 as AnyObject
+
         
         var selectedCategories = [String]()
         for(row, isSelected) in categoriesSwitchStates {

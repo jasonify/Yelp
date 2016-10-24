@@ -23,7 +23,9 @@ class BusinessCell: UITableViewCell {
     var business : Business! {
         didSet {
             titleLabel.text = business.name
-            heroImage.setImageWith(business.imageURL!)
+            if(business.imageURL != nil){
+                heroImage.setImageWith(business.imageURL!)
+            }
             categoriesLabel.text = business.categories
             address.text = business.address
             
