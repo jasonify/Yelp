@@ -14,6 +14,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tableView: UITableView!
     
+    var savedFilters = [String: AnyObject]()
+
+    
     var searchBar : UISearchBar!
     var searchTerm: String?
     var businesses: [Business]!
@@ -154,16 +157,22 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
-
+    func searchWithFilters(_ filters: [String: AnyObject]){
         let categories = filters["categories"] as? [String]
         let deals = filters["deals"] as? Bool
-        Business.searchWithTerm(term: "Restaurants", distance: nil, sort: YelpSortMode.highestRated, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
-                self.businesses = businesses
-                self.tableView.reloadData()
+        let distance = filters["distance"] as? Double
+        print("--- distance ---", distance)
+        
+        Business.searchWithTerm(term: "Restaurants", distance: distance, sort: YelpSortMode.highestRated, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
             }
         )
+    }
+    
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+        savedFilters = filters
+        searchWithFilters(filters)
     }
     
     override func didReceiveMemoryWarning() {
