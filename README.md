@@ -19,6 +19,11 @@ The following **required** functionality is completed:
    - [x] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
    - [x] Display some of the available Yelp categories (choose any 3-4 that you want).
 
+
+   - [ ] Make UI match (colors
+      - [ ]  Drop Down cell type
+      - [ ]  Checkmark cell type 
+
 The following **optional** features are implemented:
 
 - [ ] Search results page
